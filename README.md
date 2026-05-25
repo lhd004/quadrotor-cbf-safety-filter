@@ -21,13 +21,16 @@ scripts/
   run_6dof_robustness_experiments.py    CBF-gain and actuation-limit robustness checks
   px4_cbf_offboard.py                   PX4 MAVLink offboard CBF filter
   run_px4_offboard_experiments.sh       PX4/Gazebo batch runner
+  run_px4_repeated_experiments.sh       PX4/Gazebo repeated start-up runner
   run_px4_single_case.sh                PX4/Gazebo single-case rerun helper
   plot_px4_offboard_experiments.py      PX4 log summarization and figures
+  summarize_px4_repeated_experiments.py PX4 repeated-run summary tables
   plot_control_pipeline.py              Control-pipeline figure generation
 
 data/
   6dof_batch/                           Processed 6-DOF simulation summaries
   px4_offboard_experiments/             Processed PX4/Gazebo offboard logs
+  px4_offboard_repeated/                Repeated PX4/Gazebo start-up logs
 
 figures/                                Manuscript figures in PNG/PDF/SVG
 docs/                                   Reproduction notes and claim-evidence map
@@ -71,6 +74,7 @@ The batch runner restarts PX4 SITL for each scenario and only stops process IDs 
 - `data/6dof_batch/safety_filter_diagnostics.csv`: CBF-QP success rate, active-filter rate, correction magnitude, and slack diagnostics.
 - `data/6dof_robustness/robustness_summary.csv`: CBF-gain sensitivity and actuation-limit stress metrics.
 - `data/px4_offboard_experiments/summary.csv`: PX4/Gazebo multi-scenario summary.
+- `data/px4_offboard_repeated/repeated_runs_summary.csv`: PX4/Gazebo repeated start-up summary over three runs.
 
 ## Main Reproducibility Boundary
 

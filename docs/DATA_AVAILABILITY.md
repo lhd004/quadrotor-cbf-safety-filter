@@ -2,7 +2,7 @@
 
 ## Ready-to-paste statement
 
-The code and processed data supporting the simulation and PX4/Gazebo validation results are deposited in a public repository at `https://github.com/lhd004/quadrotor-cbf-safety-filter` and archived on Zenodo at `https://doi.org/10.5281/zenodo.20378419`. The repository includes the 6-DOF simulation scripts, batch experiment runner, CBF-gain and actuation-limit robustness checks, PX4 offboard validation scripts, processed CSV logs, generated summary tables, and figure source files. The PX4/Gazebo data correspond to deterministic SITL runs using a velocity-level offboard safety filter and do not include physical wind-field or hardware experiments.
+The code and processed data supporting the simulation and PX4/Gazebo validation results are deposited in a public repository at `https://github.com/lhd004/quadrotor-cbf-safety-filter` and archived on Zenodo at `https://doi.org/10.5281/zenodo.20378419`. The repository includes the 6-DOF simulation scripts, batch experiment runner, CBF-gain and actuation-limit robustness checks, PX4 offboard validation scripts, repeated PX4/Gazebo CSV logs, generated summary tables, and figure source files. The PX4/Gazebo data correspond to deterministic SITL runs using a velocity-level offboard safety filter and do not include physical wind-field or hardware experiments.
 
 ## Dataset-to-file map
 
@@ -13,6 +13,7 @@ The code and processed data supporting the simulation and PX4/Gazebo validation 
 | CBF-QP feasibility and active-filter diagnostics | `data/6dof_batch/safety_filter_diagnostics.csv` |
 | CBF-gain and actuation-limit robustness checks | `data/6dof_robustness/robustness_summary.csv`, `data/6dof_robustness/robustness_table.tex`, `figures/robustness_checks.*` |
 | PX4/Gazebo multi-scenario validation | `data/px4_offboard_experiments/summary.csv`, per-run CSV files, `figures/multi_scenario_*.{png,pdf,svg}` |
+| PX4/Gazebo repeated start-up validation | `data/px4_offboard_repeated/repeated_runs_summary.csv`, `data/px4_offboard_repeated/repeatability_table.tex`, per-run `r*_*.csv` files |
 
 ## Repository actions before submission
 
