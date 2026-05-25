@@ -1,0 +1,23 @@
+\begin{table}[t]
+\caption{Robustness checks for the full observer-assisted robust CBF controller. The CBF-gain sweep uses the strong-disturbance setting; the actuation-stress sweep tightens acceleration and thrust limits. Positive $\min h$ indicates safety-constraint satisfaction in the tested run.}
+\label{tab:robustness_checks}
+\centering
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Experiment & Case & $\min h$ & Mean err. & QP success & Active rate & Thrust sat. \\
+\midrule
+cbf\_gain\_sensitivity & 0.65 & 0.171 & 0.054 & 1.000 & 0.177 & 0.000 \\
+cbf\_gain\_sensitivity & 0.80 & 0.223 & 0.060 & 1.000 & 0.197 & 0.000 \\
+cbf\_gain\_sensitivity & 1.00 & 0.261 & 0.066 & 1.000 & 0.209 & 0.000 \\
+cbf\_gain\_sensitivity & 1.20 & 0.282 & 0.070 & 1.000 & 0.215 & 0.000 \\
+cbf\_gain\_sensitivity & 1.45 & 0.298 & 0.073 & 1.000 & 0.220 & 0.000 \\
+actuation\_stress & nominal\_limits & 0.238 & 0.065 & 1.000 & 0.222 & 0.000 \\
+actuation\_stress & moderate\_limits & 0.239 & 0.065 & 1.000 & 0.223 & 0.000 \\
+actuation\_stress & tight\_limits & 0.238 & 0.067 & 1.000 & 0.222 & 0.023 \\
+actuation\_stress & severe\_limits & 9.775 & 78.293 & 1.000 & 0.991 & 1.000 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
