@@ -16,7 +16,8 @@ The code and processed data supporting the simulation and PX4/Gazebo validation 
 ## Repository actions before submission
 
 1. Replace author placeholders in `CITATION.cff`.
-2. Create a public GitHub repository.
-3. Link the GitHub repository to Zenodo and create a versioned DOI.
-4. Replace `[Zenodo DOI]` in this file and in the manuscript.
-5. Confirm whether the repository should include the manuscript source after journal submission rules are checked.
+2. Public GitHub repository: completed at `https://github.com/lhd004/quadrotor-cbf-safety-filter`.
+3. Versioned GitHub release: `v1.0.0`.
+4. Link the GitHub repository to Zenodo and create a DOI for `v1.0.0`.
+5. Replace `[Zenodo DOI]` in this file and in the manuscript.
+6. Confirm whether the repository should include the manuscript source after journal submission rules are checked.
