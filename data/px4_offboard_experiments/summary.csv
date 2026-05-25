@@ -1,0 +1,11 @@
+scenario,controller,case,rows,min_h,final_x,final_y,final_z,final_goal_distance,max_correction,mean_wind_vx,mean_wind_vy
+large_obstacle,baseline_no_cbf,large_obstacle_baseline_no_cbf,360,-0.966663,5.059016,1.724804,-2.005953,0.980400,0.000000,0.000000,0.000000
+large_obstacle,cbf_velocity_filter,large_obstacle_cbf_velocity_filter,360,0.017253,4.407440,1.743690,-2.001859,1.613054,0.270930,0.000000,0.000000
+multi_obstacle,baseline_no_cbf,multi_obstacle_baseline_no_cbf,360,-0.550416,5.229417,1.228388,-1.994816,0.789461,0.000000,0.000000,0.000000
+multi_obstacle,cbf_velocity_filter,multi_obstacle_cbf_velocity_filter,360,0.043255,3.909877,1.498162,-1.996472,2.092427,0.311175,0.000000,0.000000
+narrow_passage,baseline_no_cbf,narrow_passage_baseline_no_cbf,360,0.372360,4.879182,0.045561,-1.999919,1.121744,0.000000,0.000000,0.000000
+narrow_passage,cbf_velocity_filter,narrow_passage_cbf_velocity_filter,360,0.344258,4.879812,0.058764,-1.995930,1.121728,0.000000,0.000000,0.000000
+single_obstacle,baseline_no_cbf,single_obstacle_baseline_no_cbf,360,-0.452712,5.016098,1.722814,-2.000562,1.022201,0.000000,0.000000,0.000000
+single_obstacle,cbf_velocity_filter,single_obstacle_cbf_velocity_filter,360,0.114778,4.634130,1.700041,-1.998444,1.398419,0.206923,0.000000,0.000000
+wind_bias,baseline_no_cbf,wind_bias_baseline_no_cbf,360,-1.275315,5.180099,0.271961,-2.001560,1.912683,0.000000,0.100000,-0.180000
+wind_bias,cbf_velocity_filter,wind_bias_cbf_velocity_filter,360,0.015979,3.635251,-1.164762,-2.003664,3.950666,0.392287,0.100000,-0.180000

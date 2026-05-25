@@ -1,0 +1,6 @@
+scenario,controller,mean_observer_error,max_observer_error,mean_disturbance_norm,final_observer_error
+nominal,cbf_observer_robust,0.035002,0.147509,0.159005,0.045698
+strong_disturbance,cbf_observer_robust,0.056066,0.236015,0.254587,0.073198
+large_obstacle,cbf_observer_robust,0.035054,0.147509,0.159140,0.045712
+tight_actuation,cbf_observer_robust,0.035002,0.147509,0.159005,0.045698
+narrow_passage,cbf_observer_robust,0.043815,0.184386,0.198923,0.057160
