@@ -52,6 +52,7 @@ class ScenarioConfig:
     accel_limit_scale: float = 1.0
     lateral_reference_scale: float = 1.0
     thrust_limit_scale: float = 1.0
+    cbf_gain_scale: float = 1.0
 
 
 @dataclass(frozen=True)
@@ -215,9 +216,10 @@ def safety_filter(
     obstacles: list[Obstacle],
     accel_min: np.ndarray,
     accel_max: np.ndarray,
+    gamma_scale: float = 1.0,
 ) -> tuple[np.ndarray, bool, float]:
-    gamma_0 = 1.35
-    gamma_1 = 2.25
+    gamma_0 = 1.35 * gamma_scale
+    gamma_1 = 2.25 * gamma_scale
     constraints = []
     constraint_rows: list[tuple[np.ndarray, float]] = []
 
@@ -329,7 +331,16 @@ def simulate(config: ControllerConfig, scenario: ScenarioConfig | None = None) -
 
         accel_nom = nominal_acceleration(t, p, v, d_hat, config, scenario, obstacles)
         if config.use_cbf:
-            accel_cmd, qp_success, min_cbf_slack = safety_filter(accel_nom, p, v, d_hat, obstacles, accel_min, accel_max)
+            accel_cmd, qp_success, min_cbf_slack = safety_filter(
+                accel_nom,
+                p,
+                v,
+                d_hat,
+                obstacles,
+                accel_min,
+                accel_max,
+                scenario.cbf_gain_scale,
+            )
         else:
             accel_cmd = np.clip(accel_nom, accel_min, accel_max)
             qp_success = True
