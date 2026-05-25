@@ -8,7 +8,7 @@ Run this on the Ubuntu server while PX4 SITL + Gazebo is running:
 
 Then in another terminal:
 
-    cd /path/to/quadrotor-cbf-safety-filter
+    cd ~/Thesis_2
     python3 scripts/px4_cbf_offboard.py
 
 The controller uses MAVLink offboard setpoints. It commands a constant altitude
@@ -78,6 +78,12 @@ def parse_args() -> argparse.Namespace:
         help="Semicolon-separated obstacle list 'x,y,r;x,y,r'. Overrides --obstacle-x/y/safe-radius.",
     )
     parser.add_argument("--speed", type=float, default=0.65)
+    parser.add_argument(
+        "--max-speed",
+        type=float,
+        default=None,
+        help="Maximum horizontal command speed after CBF correction. Defaults to --speed.",
+    )
     parser.add_argument("--alpha", type=float, default=1.2)
     parser.add_argument("--margin", type=float, default=0.08)
     parser.add_argument("--wind-vx", type=float, default=0.0, help="Wind-equivalent velocity bias in local NED x [m/s].")
@@ -385,6 +391,7 @@ def main() -> None:
 
     target_z = -abs(args.altitude)
     dt = 1.0 / args.rate
+    command_speed_limit = args.speed if args.max_speed is None else args.max_speed
 
     print("Priming offboard setpoints ...")
     for _ in range(int(2.0 * args.rate)):
@@ -444,8 +451,8 @@ def main() -> None:
                 v_safe_xy = v_disturbed_xy
                 correction = 0.0
             v_norm = float(np.linalg.norm(v_safe_xy))
-            if v_norm > args.speed:
-                v_safe_xy = args.speed * v_safe_xy / v_norm
+            if v_norm > command_speed_limit:
+                v_safe_xy = command_speed_limit * v_safe_xy / v_norm
 
             vz = 0.7 * (target_z - state.z)
             vz = float(np.clip(vz, -0.5, 0.5))

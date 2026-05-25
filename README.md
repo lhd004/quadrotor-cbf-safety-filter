@@ -21,6 +21,7 @@ scripts/
   run_6dof_robustness_experiments.py    CBF-gain and actuation-limit robustness checks
   px4_cbf_offboard.py                   PX4 MAVLink offboard CBF filter
   run_px4_offboard_experiments.sh       PX4/Gazebo batch runner
+  run_px4_single_case.sh                PX4/Gazebo single-case rerun helper
   plot_px4_offboard_experiments.py      PX4 log summarization and figures
   plot_control_pipeline.py              Control-pipeline figure generation
 
@@ -60,6 +61,8 @@ python scripts/plot_px4_offboard_experiments.py \
 ## PX4/Gazebo Requirement
 
 The PX4 offboard experiments require a separate Ubuntu environment with PX4-Autopilot, Gazebo, and `pymavlink`. See `docs/PX4_GAZEBO_REPRODUCTION.md`.
+
+The batch runner restarts PX4 SITL for each scenario and only stops process IDs started by that scenario. For parameter checks or failed-case reruns, use `scripts/run_px4_single_case.sh` with the same PX4/Gazebo environment.
 
 ## Key Processed Data
 

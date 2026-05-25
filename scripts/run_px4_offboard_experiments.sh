@@ -78,7 +78,7 @@ run_case "single_obstacle_cbf_velocity_filter" "single_obstacle" "cbf_velocity_f
 run_case "large_obstacle_baseline_no_cbf" "large_obstacle" "baseline_no_cbf" \
     --disable-cbf --goal-y 2.0 --speed 0.35 --safe-radius 1.35 --alpha 0.7 --margin 0.05
 run_case "large_obstacle_cbf_velocity_filter" "large_obstacle" "cbf_velocity_filter" \
-    --goal-y 2.0 --speed 0.35 --safe-radius 1.35 --alpha 0.7 --margin 0.05
+    --goal-y 2.0 --speed 0.35 --max-speed 0.55 --safe-radius 1.35 --alpha 0.9 --margin 0.08
 
 run_case "multi_obstacle_baseline_no_cbf" "multi_obstacle" "baseline_no_cbf" \
     --disable-cbf --goal-y 1.4 --speed 0.35 --obstacles "2.6,-0.45,0.80;3.7,0.55,0.80" --alpha 0.7 --margin 0.05
@@ -93,7 +93,7 @@ run_case "narrow_passage_cbf_velocity_filter" "narrow_passage" "cbf_velocity_fil
 run_case "wind_bias_baseline_no_cbf" "wind_bias" "baseline_no_cbf" \
     --disable-cbf --goal-y 2.0 --speed 0.35 --safe-radius 1.15 --alpha 0.7 --margin 0.05 --wind-vx 0.10 --wind-vy -0.18
 run_case "wind_bias_cbf_velocity_filter" "wind_bias" "cbf_velocity_filter" \
-    --goal-y 2.0 --speed 0.35 --safe-radius 1.15 --alpha 0.7 --margin 0.05 --wind-vx 0.10 --wind-vy -0.18
+    --goal-y 2.0 --speed 0.35 --max-speed 0.85 --safe-radius 1.15 --alpha 0.35 --margin 0.14 --wind-vx 0.10 --wind-vy -0.18
 
 python3 "$PROJECT_DIR/scripts/plot_px4_offboard_experiments.py" \
     "$OUT_DIR"/*_baseline_no_cbf.csv \
