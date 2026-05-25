@@ -6,7 +6,7 @@ authors:
   - family-names: "To be completed"
     given-names: "To be completed"
 date-released: 2026-05-25
-repository-code: "TO_BE_REPLACED_WITH_GITHUB_URL"
+repository-code: "https://github.com/lhd004/quadrotor-cbf-safety-filter"
 url: "TO_BE_REPLACED_WITH_ZENODO_DOI_URL"
 license: MIT
 keywords:
@@ -16,4 +16,3 @@ keywords:
   - PX4
   - Gazebo
   - safety-critical control
-

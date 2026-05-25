@@ -2,7 +2,7 @@
 
 ## Ready-to-paste statement before DOI assignment
 
-The code and processed data supporting the simulation and PX4/Gazebo validation results are deposited in a public repository at `[GitHub URL]` and archived at `[Zenodo DOI]`. The repository includes the 6-DOF simulation scripts, batch experiment runner, PX4 offboard validation scripts, processed CSV logs, generated summary tables, and figure source files. The PX4/Gazebo data correspond to deterministic SITL runs using a velocity-level offboard safety filter and do not include physical wind-field or hardware experiments.
+The code and processed data supporting the simulation and PX4/Gazebo validation results are deposited in a public repository at `https://github.com/lhd004/quadrotor-cbf-safety-filter` and archived at `[Zenodo DOI]`. The repository includes the 6-DOF simulation scripts, batch experiment runner, PX4 offboard validation scripts, processed CSV logs, generated summary tables, and figure source files. The PX4/Gazebo data correspond to deterministic SITL runs using a velocity-level offboard safety filter and do not include physical wind-field or hardware experiments.
 
 ## Dataset-to-file map
 
@@ -18,6 +18,5 @@ The code and processed data supporting the simulation and PX4/Gazebo validation 
 1. Replace author placeholders in `CITATION.cff`.
 2. Create a public GitHub repository.
 3. Link the GitHub repository to Zenodo and create a versioned DOI.
-4. Replace `[GitHub URL]` and `[Zenodo DOI]` in this file and in the manuscript.
+4. Replace `[Zenodo DOI]` in this file and in the manuscript.
 5. Confirm whether the repository should include the manuscript source after journal submission rules are checked.
-
