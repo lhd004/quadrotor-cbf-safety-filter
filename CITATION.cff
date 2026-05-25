@@ -1,4 +1,4 @@
-﻿cff-version: 1.2.0
+cff-version: 1.2.0
 title: "Quadrotor CBF Safety Filter: Code and Data"
 message: "If you use this code or dataset, please cite the associated manuscript and this archived repository."
 type: software
@@ -8,8 +8,8 @@ authors:
     given-names: "Haodong"
 date-released: 2026-05-25
 repository-code: "https://github.com/lhd004/quadrotor-cbf-safety-filter"
-url: "https://doi.org/10.5281/zenodo.20377199"
-doi: "10.5281/zenodo.20377199"
+url: "https://doi.org/10.5281/zenodo.20378419"
+doi: "10.5281/zenodo.20378419"
 license: MIT
 keywords:
   - quadrotor
