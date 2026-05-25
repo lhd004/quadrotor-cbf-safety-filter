@@ -1,0 +1,24 @@
+\begin{table}[t]
+\caption{Repeatability of PX4 SITL + Gazebo offboard validation over repeated deterministic start-up runs. Positive $\min h$ indicates that the logged trajectory remains outside the specified obstacle set.}
+\label{tab:px4_repeatability}
+\centering
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Scenario & Controller & $n$ & mean $\min h$ & std $\min h$ & Success & Mean final dist. \\
+\midrule
+large\_obstacle & baseline\_no\_cbf & 3 & -1.004 & 0.064 & 0\% & 0.985 \\
+large\_obstacle & cbf\_velocity\_filter & 3 & 0.308 & 0.050 & 100\% & 2.391 \\
+multi\_obstacle & baseline\_no\_cbf & 3 & -0.544 & 0.024 & 0\% & 0.784 \\
+multi\_obstacle & cbf\_velocity\_filter & 3 & 0.070 & 0.022 & 100\% & 2.223 \\
+narrow\_passage & baseline\_no\_cbf & 3 & 0.349 & 0.015 & 100\% & 1.104 \\
+narrow\_passage & cbf\_velocity\_filter & 3 & 0.366 & 0.008 & 100\% & 1.156 \\
+single\_obstacle & baseline\_no\_cbf & 3 & -0.438 & 0.044 & 0\% & 1.032 \\
+single\_obstacle & cbf\_velocity\_filter & 3 & 0.185 & 0.031 & 100\% & 1.356 \\
+wind\_bias & baseline\_no\_cbf & 3 & -1.267 & 0.029 & 0\% & 1.855 \\
+wind\_bias & cbf\_velocity\_filter & 3 & 0.737 & 0.021 & 100\% & 4.319 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

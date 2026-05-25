@@ -1,0 +1,11 @@
+scenario,controller,n,min_h_mean,min_h_std,min_h_min,goal_distance_mean,goal_distance_std,success_rate,max_correction_mean
+large_obstacle,baseline_no_cbf,3,-1.004308,0.063886,-1.070784,0.985189,0.055766,0.000000,0.000000
+large_obstacle,cbf_velocity_filter,3,0.307564,0.049878,0.261831,2.390533,0.031966,1.000000,0.214018
+multi_obstacle,baseline_no_cbf,3,-0.543925,0.024487,-0.569869,0.784207,0.068295,0.000000,0.000000
+multi_obstacle,cbf_velocity_filter,3,0.070222,0.022177,0.047432,2.222685,0.077153,1.000000,0.313601
+narrow_passage,baseline_no_cbf,3,0.349258,0.014738,0.340165,1.104393,0.060765,1.000000,0.000000
+narrow_passage,cbf_velocity_filter,3,0.365595,0.007851,0.358438,1.156460,0.025341,1.000000,0.004120
+single_obstacle,baseline_no_cbf,3,-0.438295,0.043764,-0.485656,1.031569,0.051453,0.000000,0.000000
+single_obstacle,cbf_velocity_filter,3,0.185051,0.030695,0.160799,1.355531,0.043149,1.000000,0.188509
+wind_bias,baseline_no_cbf,3,-1.266631,0.028693,-1.294280,1.855047,0.013007,0.000000,0.000000
+wind_bias,cbf_velocity_filter,3,0.737249,0.021488,0.715955,4.319033,0.119991,1.000000,0.316037
