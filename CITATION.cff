@@ -8,7 +8,8 @@ authors:
     given-names: "Haodong"
 date-released: 2026-05-25
 repository-code: "https://github.com/lhd004/quadrotor-cbf-safety-filter"
-url: "https://github.com/lhd004/quadrotor-cbf-safety-filter"
+url: "https://doi.org/10.5281/zenodo.20376601"
+doi: "10.5281/zenodo.20376601"
 license: MIT
 keywords:
   - quadrotor
