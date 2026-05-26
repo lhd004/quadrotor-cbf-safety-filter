@@ -42,6 +42,7 @@ class ControllerConfig:
     use_observer: bool
     use_robust: bool
     use_apf: bool = False
+    use_predictive_filter: bool = False
 
 
 @dataclass(frozen=True)
@@ -250,6 +251,60 @@ def safety_filter(
     return x0, False, min_slack
 
 
+def predictive_safety_filter(
+    accel_nom: np.ndarray,
+    t: float,
+    p: np.ndarray,
+    v: np.ndarray,
+    d_hat: np.ndarray,
+    obstacles: list[Obstacle],
+    scenario: ScenarioConfig,
+    accel_min: np.ndarray,
+    accel_max: np.ndarray,
+) -> tuple[np.ndarray, bool, float]:
+    horizon = np.array([0.12, 0.24, 0.36, 0.48, 0.60, 0.72])
+    safety_margin = 0.015
+
+    constraints = []
+    constraint_rows: list[tuple[float, float]] = []
+    for tau in horizon:
+        for obstacle in obstacles:
+            def predicted_h(u: np.ndarray, tau: float = tau, obstacle: Obstacle = obstacle) -> float:
+                p_pred = p + tau * v + 0.5 * tau**2 * (u + d_hat)
+                return float((p_pred - obstacle.center) @ (p_pred - obstacle.center) - obstacle.radius**2 - safety_margin)
+
+            constraints.append({"type": "ineq", "fun": predicted_h})
+
+    def objective(u: np.ndarray) -> float:
+        total = 0.18 * float((u - accel_nom) @ (u - accel_nom))
+        for tau in horizon:
+            p_ref, v_ref, _ = reference(t + float(tau), scenario.lateral_reference_scale)
+            p_pred = p + tau * v + 0.5 * tau**2 * (u + d_hat)
+            v_pred = v + tau * (u + d_hat)
+            total += 1.6 * float((p_pred - p_ref) @ (p_pred - p_ref))
+            total += 0.35 * float((v_pred - v_ref) @ (v_pred - v_ref))
+        return total
+
+    x0 = np.clip(accel_nom, accel_min, accel_max)
+    result = minimize(
+        objective,
+        x0,
+        bounds=list(zip(accel_min, accel_max)),
+        constraints=constraints,
+        method="SLSQP",
+        options={"ftol": 1e-7, "maxiter": 60, "disp": False},
+    )
+
+    accel_safe = np.asarray(result.x) if result.success else x0
+    min_margin = float("inf")
+    for tau in horizon:
+        for obstacle in obstacles:
+            p_pred = p + tau * v + 0.5 * tau**2 * (accel_safe + d_hat)
+            margin = float((p_pred - obstacle.center) @ (p_pred - obstacle.center) - obstacle.radius**2 - safety_margin)
+            min_margin = min(min_margin, margin)
+    return accel_safe, bool(result.success), min_margin
+
+
 def attitude_torque(
     r: np.ndarray,
     omega: np.ndarray,
@@ -318,6 +373,10 @@ def simulate(config: ControllerConfig, scenario: ScenarioConfig | None = None) -
 
     measured_accel_prev = np.zeros(3)
     model_accel_prev = np.zeros(3)
+    predictive_update_steps = max(1, int(round(0.05 / dt)))
+    predictive_accel_cmd = np.zeros(3)
+    predictive_success = True
+    predictive_min_margin = np.nan
 
     for k, t in enumerate(t_grid):
         p_ref, _, _ = reference(t, scenario.lateral_reference_scale)
@@ -330,7 +389,23 @@ def simulate(config: ControllerConfig, scenario: ScenarioConfig | None = None) -
             d_hat = np.zeros(3)
 
         accel_nom = nominal_acceleration(t, p, v, d_hat, config, scenario, obstacles)
-        if config.use_cbf:
+        if config.use_predictive_filter:
+            if k % predictive_update_steps == 0:
+                predictive_accel_cmd, predictive_success, predictive_min_margin = predictive_safety_filter(
+                    accel_nom,
+                    t,
+                    p,
+                    v,
+                    d_hat,
+                    obstacles,
+                    scenario,
+                    accel_min,
+                    accel_max,
+                )
+            accel_cmd = np.clip(predictive_accel_cmd, accel_min, accel_max)
+            qp_success = predictive_success
+            min_cbf_slack = predictive_min_margin
+        elif config.use_cbf:
             accel_cmd, qp_success, min_cbf_slack = safety_filter(
                 accel_nom,
                 p,

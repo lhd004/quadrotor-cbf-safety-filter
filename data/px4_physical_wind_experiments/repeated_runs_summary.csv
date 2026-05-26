@@ -1,0 +1,3 @@
+scenario,controller,n,min_h_mean,min_h_std,min_h_min,goal_distance_mean,goal_distance_std,success_rate,max_correction_mean
+physical_wind,baseline_no_cbf,3,-0.685678,0.002914,-0.688134,0.147827,0.028544,0.000000,0.000000
+physical_wind,cbf_velocity_filter,3,0.176000,0.058085,0.122918,3.010037,0.553665,1.000000,0.391324

@@ -1,0 +1,17 @@
+\begin{table}[t]
+\caption{PX4 SITL + Gazebo multi-scenario offboard validation. Positive $\min h$ indicates that the logged trajectory remains outside the specified obstacle set.}
+\label{tab:px4_multiscenario}
+\centering
+\begin{tabular}{llrr}
+\toprule
+Scenario & Controller & $\min h \uparrow$ & Final goal dist. \\
+\midrule
+physical\_wind & baseline\_no\_cbf & -0.688 & 0.180 \\
+physical\_wind & baseline\_no\_cbf & -0.686 & 0.136 \\
+physical\_wind & baseline\_no\_cbf & -0.682 & 0.127 \\
+physical\_wind & cbf\_velocity\_filter & 0.167 & 3.450 \\
+physical\_wind & cbf\_velocity\_filter & 0.238 & 2.388 \\
+physical\_wind & cbf\_velocity\_filter & 0.123 & 3.191 \\
+\bottomrule
+\end{tabular}
+\end{table}

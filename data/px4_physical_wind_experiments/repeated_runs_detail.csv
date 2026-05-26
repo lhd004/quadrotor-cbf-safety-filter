@@ -1,0 +1,7 @@
+repeat,scenario,controller,case,rows,min_h,final_goal_distance,max_correction,success,mean_wind_vx,mean_wind_vy
+r01,physical_wind,baseline_no_cbf,r01_physical_wind_baseline_no_cbf,400,-0.6881335484557256,0.18036328066341364,0.0,0,0.0,0.0
+r02,physical_wind,baseline_no_cbf,r02_physical_wind_baseline_no_cbf,400,-0.68644257120924,0.13611915653461634,0.0,0,0.0,0.0
+r03,physical_wind,baseline_no_cbf,r03_physical_wind_baseline_no_cbf,400,-0.6824571268759444,0.12699880905197175,0.0,0,0.0,0.0
+r01,physical_wind,cbf_velocity_filter,r01_physical_wind_cbf_velocity_filter,400,0.16703617391673198,3.450315518690059,0.39453795737829633,1,0.0,0.0
+r02,physical_wind,cbf_velocity_filter,r02_physical_wind_cbf_velocity_filter,400,0.23804636905881738,2.3884487948335917,0.37281008027126955,1,0.0,0.0
+r03,physical_wind,cbf_velocity_filter,r03_physical_wind_cbf_velocity_filter,400,0.12291816410343182,3.191345954295799,0.4066242644499196,1,0.0,0.0

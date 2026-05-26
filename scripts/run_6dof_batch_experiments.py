@@ -32,6 +32,7 @@ plt.rcParams.update(
 CONTROLLERS = [
     ControllerConfig("baseline", use_cbf=False, use_observer=False, use_robust=False),
     ControllerConfig("apf_avoidance", use_cbf=False, use_observer=False, use_robust=False, use_apf=True),
+    ControllerConfig("predictive_safety_filter", use_cbf=False, use_observer=False, use_robust=False, use_predictive_filter=True),
     ControllerConfig("cbf_only", use_cbf=True, use_observer=False, use_robust=False),
     ControllerConfig("cbf_robust", use_cbf=True, use_observer=False, use_robust=True),
     ControllerConfig("cbf_observer", use_cbf=True, use_observer=True, use_robust=False),
@@ -173,7 +174,7 @@ def write_summary(rows: list[dict[str, object]]) -> None:
 def write_latex_table(rows: list[dict[str, object]]) -> None:
     lines = [
         r"\begin{table}[t]",
-        r"\caption{Batch 6-DOF simulation and ablation results. Positive $\min h$ indicates that all obstacle constraints are respected. Bold values mark the best safety margin or tracking error within each scenario.}",
+        r"\caption{Batch 6-DOF simulation, ablation, and baseline-comparison results. Positive $\min h$ indicates that all obstacle constraints are respected. Bold values mark the best safety margin or tracking error within each scenario.}",
         r"\label{tab:batch_6dof}",
         r"\centering",
         r"\scriptsize",

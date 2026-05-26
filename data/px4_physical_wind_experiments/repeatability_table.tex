@@ -1,0 +1,16 @@
+\begin{table}[t]
+\caption{PX4/Gazebo physical-wind validation in the \texttt{windy} world over repeated deterministic start-up runs. Positive $\min h$ indicates that the logged trajectory remains outside the specified obstacle set.}
+\label{tab:px4_physical_wind}
+\centering
+\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrrr}
+\toprule
+Scenario & Controller & $n$ & mean $\min h$ & std $\min h$ & Success & Mean final dist. \\
+\midrule
+physical\_wind & baseline\_no\_cbf & 3 & -0.686 & 0.003 & 0\% & 0.148 \\
+physical\_wind & cbf\_velocity\_filter & 3 & 0.176 & 0.058 & 100\% & 3.010 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}

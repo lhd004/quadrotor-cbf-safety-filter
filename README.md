@@ -7,7 +7,7 @@ The repository supports three validation layers:
 1. A second-order translational CBF-QP safety-filter demo.
 2. A full 6-DOF quadrotor simulation with disturbance observer, robust tracking, thrust and attitude realization, and ablation studies.
 3. CBF-gain and actuation-limit robustness checks for the full 6-DOF controller.
-4. PX4 SITL + Gazebo offboard validation of a velocity-level CBF safety-filtering principle.
+4. PX4 SITL + Gazebo offboard validation of a velocity-level CBF safety-filtering principle, including repeated start-up runs and a fixed physical-wind Gazebo stress test.
 
 The PX4/Gazebo experiment is included as practical flight-stack evidence. It should not be interpreted as a formal proof of forward invariance for PX4 internal controllers.
 
@@ -21,6 +21,7 @@ scripts/
   run_6dof_robustness_experiments.py    CBF-gain and actuation-limit robustness checks
   px4_cbf_offboard.py                   PX4 MAVLink offboard CBF filter
   run_px4_offboard_experiments.sh       PX4/Gazebo batch runner
+  run_px4_physical_wind_experiments.sh  PX4/Gazebo fixed-wind stress-test runner
   run_px4_repeated_experiments.sh       PX4/Gazebo repeated start-up runner
   run_px4_single_case.sh                PX4/Gazebo single-case rerun helper
   plot_px4_offboard_experiments.py      PX4 log summarization and figures
@@ -31,6 +32,7 @@ data/
   6dof_batch/                           Processed 6-DOF simulation summaries
   px4_offboard_experiments/             Processed PX4/Gazebo offboard logs
   px4_offboard_repeated/                Repeated PX4/Gazebo start-up logs
+  px4_physical_wind_experiments/        Fixed physical-wind PX4/Gazebo logs
 
 figures/                                Manuscript figures in PNG/PDF/SVG
 docs/                                   Reproduction notes and claim-evidence map
@@ -75,7 +77,8 @@ The batch runner restarts PX4 SITL for each scenario and only stops process IDs 
 - `data/6dof_robustness/robustness_summary.csv`: CBF-gain sensitivity and actuation-limit stress metrics.
 - `data/px4_offboard_experiments/summary.csv`: PX4/Gazebo multi-scenario summary.
 - `data/px4_offboard_repeated/repeated_runs_summary.csv`: PX4/Gazebo repeated start-up summary over three runs.
+- `data/px4_physical_wind_experiments/repeated_runs_summary.csv`: PX4/Gazebo fixed physical-wind summary over three start-up runs.
 
 ## Main Reproducibility Boundary
 
-The 6-DOF simulations reproduce the model-level controller and diagnostics. The PX4/Gazebo files reproduce a velocity-level offboard safety-filter validation. The physical Gazebo wind field and hardware experiments are not included in this dataset.
+The 6-DOF simulations reproduce the model-level controller and diagnostics. The PX4/Gazebo files reproduce a velocity-level offboard safety-filter validation, including command-level wind-bias and fixed physical-wind Gazebo cases. The fixed-wind case is a targeted stress test in the PX4 `windy` world, not a turbulent-wind campaign. Hardware experiments are not included in this dataset.
