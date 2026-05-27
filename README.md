@@ -8,6 +8,7 @@ The repository supports three validation layers:
 2. A full 6-DOF quadrotor simulation with disturbance observer, robust tracking, thrust and attitude realization, and ablation studies.
 3. CBF-gain and actuation-limit robustness checks for the full 6-DOF controller.
 4. PX4 SITL + Gazebo offboard validation of a velocity-level CBF safety-filtering principle, including repeated start-up runs and a fixed physical-wind Gazebo stress test.
+5. Supplementary PX4 FMU HITL diagnostic logs for real flight-controller communication and buffered velocity-level safety filtering.
 
 The PX4/Gazebo experiment is included as practical flight-stack evidence. It should not be interpreted as a formal proof of forward invariance for PX4 internal controllers.
 
@@ -33,6 +34,8 @@ data/
   px4_offboard_experiments/             Processed PX4/Gazebo offboard logs
   px4_offboard_repeated/                Repeated PX4/Gazebo start-up logs
   px4_physical_wind_experiments/        Fixed physical-wind PX4/Gazebo logs
+  hitl_redesign_buffered_r013_n3/        PX4 FMU HITL diagnostic campaign logs
+  hitl_clean_attempts/                   Low-altitude clean-HITL attempt summaries
 
 figures/                                Manuscript figures in PNG/PDF/SVG
 docs/                                   Reproduction notes and claim-evidence map
@@ -78,7 +81,9 @@ The batch runner restarts PX4 SITL for each scenario and only stops process IDs 
 - `data/px4_offboard_experiments/summary.csv`: PX4/Gazebo multi-scenario summary.
 - `data/px4_offboard_repeated/repeated_runs_summary.csv`: PX4/Gazebo repeated start-up summary over three runs.
 - `data/px4_physical_wind_experiments/repeated_runs_summary.csv`: PX4/Gazebo fixed physical-wind summary over three start-up runs.
+- `data/hitl_redesign_buffered_r013_n3/hitl_campaign_summary.csv`: PX4 FMU HITL diagnostic summary with a repeated baseline-negative/CBF-positive barrier-sign contrast.
+- `data/hitl_clean_attempts/*.csv`: follow-up low-altitude HITL attempt summaries showing why these runs are treated as diagnostic rather than clean repeated validation.
 
 ## Main Reproducibility Boundary
 
-The 6-DOF simulations reproduce the model-level controller and diagnostics. The PX4/Gazebo files reproduce a velocity-level offboard safety-filter validation, including command-level wind-bias and fixed physical-wind Gazebo cases. The fixed-wind case is a targeted stress test in the PX4 `windy` world, not a turbulent-wind campaign. Hardware experiments are not included in this dataset.
+The 6-DOF simulations reproduce the model-level controller and diagnostics. The PX4/Gazebo files reproduce a velocity-level offboard safety-filter validation, including command-level wind-bias and fixed physical-wind Gazebo cases. The fixed-wind case is a targeted stress test in the PX4 `windy` world, not a turbulent-wind campaign. The HITL files document real PX4 FMU communication and diagnostic barrier-sign behavior, but they are not clean repeated hardware validation and do not constitute real flight or motor/propeller actuator tests.
